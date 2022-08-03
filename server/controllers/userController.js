@@ -5,7 +5,7 @@ module.exports = {
   getUsers(req, res) {
     return User.find()
       .populate("thoughts")
-      .then((courses) => res.json(courses))
+      .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
 
@@ -32,7 +32,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with that ID" })
-          : res.json(course)
+          : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },

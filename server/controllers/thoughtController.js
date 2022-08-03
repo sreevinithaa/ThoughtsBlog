@@ -16,7 +16,7 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought with that ID" })
-          : res.json(course)
+          : res.json(thought)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -34,7 +34,7 @@ module.exports = {
           ? res.status(404).json({
               message: "Thought created, but found no user with that ID",
             })
-          : res.json("Created the Thought 🎉")
+          :   res.json(user)
       )
       .catch((err) => {
         console.log(err);
@@ -62,7 +62,7 @@ module.exports = {
           ? res.status(404).json({
               message: "Thought created, but found no user with that ID",
             })
-          : res.json("Created the Thought 🎉")
+          :  res.json(thought)
       )
       .catch((err) => {
         console.log(err);
@@ -87,7 +87,7 @@ module.exports = {
           ? res.status(404).json({
               message: "Thought couldnt find!",
             })
-          : res.json("Comment deleted for the Thought 🎉")
+          :   res.json(thought)
       )
       .catch((err) => {
         console.log(err);
@@ -111,7 +111,7 @@ module.exports = {
               ? res.status(404).json({
                   message: "user couldnt find!",
                 })
-              : res.json("thought deleted  🎉")
+              : res.json(user)
           )
     );
   },
