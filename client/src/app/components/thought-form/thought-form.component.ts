@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thought-form.component.css']
 })
 export class ThoughtFormComponent implements OnInit {
-
+IsLoggedIn:boolean=false;
+error?:string;
   constructor() { }
 
   ngOnInit(): void {

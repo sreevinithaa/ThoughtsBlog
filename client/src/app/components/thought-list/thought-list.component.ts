@@ -9,6 +9,7 @@ import { Thought } from 'src/app/Thought';
 export class ThoughtListComponent implements OnInit {
   @Input() thought?: Thought;
   @Input() showUsername: boolean=true;
+
   constructor() { }
 
   ngOnInit(): void {

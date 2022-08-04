@@ -1,11 +1,13 @@
 <main>
     <div class="flex-row justify-center">
-        <div class="col-12 col-md-10 mb-3 p-3">
-
+        <div class="col-12 col-md-10 mb-3 p-3" [ngStyle]="{'border': '1px dotted #1a1a1a'}">
+            <app-thought-form></app-thought-form>
         </div>
         <div class="col-12 col-md-8 mb-3">
 
-<app-thought-list *ngFor="let thought of thoughts" [thought]="thought" [showUsername]="true"></app-thought-list>
+            <h3 *ngIf="showTitle">{{title}}</h3>
+            <app-thought-list *ngFor="let thought of thoughts"  [thought]="thought" [showUsername]="true">
+            </app-thought-list>
 
         </div>
     </div>

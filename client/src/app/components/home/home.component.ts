@@ -8,7 +8,8 @@ import { Thought } from '../../Thought';
 })
 export class HomeComponent implements OnInit {
   thoughts: Thought[] = [];
-
+title:string="Some Feed for Thought(s)...";
+showTitle:boolean=true;
   constructor(private thoughtService: ThoughtServiceService) {}
 
   ngOnInit(): void {
