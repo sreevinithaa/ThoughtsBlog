@@ -3,12 +3,14 @@ const { Thought, User } = require("../models");
 module.exports = {
   // Get all courses
   getThoughts(req, res) {
-    const params = req.param.username ? req.param.username : {};
-    return Thought.find({ params })
+    const params = req.query.username ? {thoughtAuthor:req.query.username} : {};
+ 
+    return Thought.find(params)
       .sort({ createdAt: -1 })
       .then((thought) => res.json(thought))
       .catch((err) => res.status(500).json(err));
   },
+ 
 
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params._id })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders ,HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Thought } from '../Thought';
 import { User } from '../User';
@@ -19,8 +19,10 @@ export class ThoughtServiceService {
 
   constructor(private http: HttpClient) {}
 
-  getThoughts(): Observable<Thought[]> {
-    return this.http.get<Thought[]>(this.apiUrl);
+  getThoughts(username?:string): Observable<Thought[]> {
+   const url = username?`${this.apiUrl}/${username}?username=${username}`:this.apiUrl;
+   console.log(url);
+    return this.http.get<Thought[]>(url);
   }
   getSingleThought(id: string): Observable<Thought> {
     const url = `${this.apiUrl}/${id}`;

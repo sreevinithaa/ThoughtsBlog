@@ -1,0 +1,18 @@
+<div>
+    <div class="flex-row justify-center mb-3">
+        <h2 class="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+            Viewing <span *ngIf="user">{{user?.username}} 's</span> <span *ngIf="!user">your</span>> profile.
+        </h2>
+
+        <div class="col-12 col-md-10 mb-5">
+            <app-thought-list *ngFor="let thought of thoughts"  [thought]="thought" [showUsername]="false">
+            </app-thought-list>
+        
+        </div>
+
+        <div class="col-12 col-md-10 mb-3 p-3" *ngIf="user" [ngStyle]="{ 'border': '1px dotted #1a1a1a' }">
+            <app-thought-form></app-thought-form>
+        </div>
+
+    </div>
+</div>
