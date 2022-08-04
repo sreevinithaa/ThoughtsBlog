@@ -22,6 +22,7 @@
     </div>
     <p *ngIf="!IsLoggedIn">
         You need to be logged in to share your thoughts. Please
-        <a href="#">login</a> or <a href="#">signup.</a>
+        <a [routerLink]="['/login']"
+        >login</a> or <a  [routerLink]="['/signup']">signup.</a>
     </p>
 </div>

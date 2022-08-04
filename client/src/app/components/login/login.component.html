@@ -1,1 +1,26 @@
-<p>login works!</p>
+<main class="flex-row justify-center mb-4">
+    <div class="col-12 col-lg-10">
+        <div class="card">
+            <h4 class="card-header bg-dark text-light p-2">Login</h4>
+            <div class="card-body">
+
+
+
+                <form>
+                    <input class="form-input" placeholder="Your email" name="email" type="email" />
+                    <input class="form-input" placeholder="******" name="password" type="password" />
+                    <button class="btn btn-block btn-primary" [ngStyle]="{ 'cursor': 'pointer' }" type="submit">
+                        Submit
+                    </button>
+                </form>
+
+
+
+                <div *ngIf="error" class="my-3 p-3 bg-danger text-white">
+                    {{error}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
