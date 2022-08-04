@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
+import { Thought } from 'src/app/Thought';
 
 @Component({
   selector: 'app-thought-list',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./thought-list.component.css']
 })
 export class ThoughtListComponent implements OnInit {
-
+  @Input() thought?: Thought;
+  @Input() showUsername: boolean=true;
   constructor() { }
 
   ngOnInit(): void {
