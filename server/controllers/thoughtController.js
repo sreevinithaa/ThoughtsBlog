@@ -13,7 +13,8 @@ module.exports = {
  
 
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params._id })
+   
+    Thought.findOne({ _id: req.params.thoughtId })
       .select("-__v")
       .then((thought) =>
         !thought

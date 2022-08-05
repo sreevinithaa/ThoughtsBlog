@@ -20,7 +20,7 @@ export class ThoughtServiceService {
   constructor(private http: HttpClient) {}
 
   getThoughts(username?:string): Observable<Thought[]> {
-   const url = username?`${this.apiUrl}/${username}?username=${username}`:this.apiUrl;
+   const url = username?`${this.apiUrl}?username=${username}`:this.apiUrl;
    console.log(url);
     return this.http.get<Thought[]>(url);
   }

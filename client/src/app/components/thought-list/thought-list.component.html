@@ -14,7 +14,7 @@
     <div class="card-body bg-light p-2">
         <p>{{thought?.thoughtText}}</p>
     </div>
-    <a class="btn btn-primary btn-block btn-squared" href="#">
+    <a class="btn btn-primary btn-block btn-squared" [routerLink]="['/thought',thought?._id]">
         Join the discussion on this thought.
     </a>
 </div>

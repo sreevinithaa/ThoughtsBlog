@@ -1,0 +1,26 @@
+<div class="my-3">
+    <h3 class="card-header bg-dark text-light p-2 m-0">
+        {{thought?.thoughtAuthor}} <br />
+        <span [ngStyle]="{ 'fontSize': '1rem' }">
+            had this thought on {{thought?.createdAt}}
+        </span>
+    </h3>
+    <div class="bg-light py-4">
+        <blockquote class="p-4" [ngStyle]="{
+          'fontSize': '1.5rem',
+          'fontStyle': 'italic',
+          'border': '2px dotted #1a1a1a',
+          'lineHeight': '1.5'}">
+            {{thought?.thoughtText}}
+        </blockquote>
+    </div>
+
+    <div class="my-5">
+        <app-comment-list [comments]="thought?.comments"> </app-comment-list>
+
+    </div>
+    <div class="m-3 p-4" [ngStyle]="{ 'border': '1px dotted #1a1a1a' }">
+        <app-comment-form [thoughtId]="thought?._id"></app-comment-form>
+
+    </div>
+</div>

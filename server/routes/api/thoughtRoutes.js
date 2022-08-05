@@ -10,7 +10,7 @@ const {
 
 // /api/applications
 router.route('/').get(getThoughts).post(createThought);
-router.route('/:username').get(getThoughts)
+
 // /api/applications/:applicationId
 router
   .route('/:thoughtId')

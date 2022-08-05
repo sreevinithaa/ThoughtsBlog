@@ -1,1 +1,11 @@
-<p>comment-list works!</p>
+<h3 *ngIf="!comments">No Comments Yet</h3>
+<div *ngIf="comments">
+    <h3 class="p-5 display-inline-block" [ngStyle]="{ 'borderBottom': '1px dotted #1a1a1a' }">
+        Comments
+    </h3>
+    <div >
+
+       <app-comment-item class="flex-row my-4" *ngFor="let comment of comments" [comment]="comment"></app-comment-item>
+
+    </div>
+</div>

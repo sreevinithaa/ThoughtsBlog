@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SingleThoughtComponent } from './components/single-thought/single-thought.component';
+import { CommentItemComponent } from './components/comment-item/comment-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     SignUpComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    SingleThoughtComponent,
+    CommentItemComponent
   ],
   imports: [
     BrowserModule,
