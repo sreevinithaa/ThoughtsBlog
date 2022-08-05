@@ -9,13 +9,13 @@ import { User } from 'src/app/User';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-username?:string;
+username:string|null=null;
 
   constructor(private activateRoute: ActivatedRoute,private thoughtService:ThoughtServiceService) { }
-  user?:User;
+  user:User|null=null;
   thoughts: Thought[] = [];
   ngOnInit(): void {
-    this.username=this.activateRoute.snapshot.paramMap.get('id')?.toString();
+    this.username=this.activateRoute.snapshot.paramMap.get('id');
    if(this.username)
    {
     this.thoughtService

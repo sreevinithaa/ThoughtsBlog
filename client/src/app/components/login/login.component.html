@@ -4,15 +4,61 @@
             <h4 class="card-header bg-dark text-light p-2">Login</h4>
             <div class="card-body">
 
+<form #login="ngForm" (ngSubmit)="onSubmit(login)">
+    <div class="form-group">
+      
+        <input
+        class="form-control form-input"
+         name="email"
+         #email="ngModel"
+         required
+        ngModel                   
+        placeholder="Enter email"
+      />
+      <div *ngIf="email.touched && email.invalid" class="my-3 p-3 bg-danger text-white">Email is required</div>
+    </div>
+    
+    <div class="form-group">
+       
+        <input
+        class="form-control form-input"
+        required
+        minlength="5"
+         name="password"
+         #password="ngModel"
+         type="password"
+        ngModel                   
+        placeholder="Enter Password"
+      />
+      <div *ngIf="password.touched && password.invalid" class="my-3 p-3 bg-danger text-white">
+        
+       Password is required
+      </div>
+    </div>
+   
+    <button class="btn btn-block btn-primary" type="submit" [ngStyle]="{ 'cursor': 'pointer' }" >
+        Submit
+    </button>
+</form>
 
-
-                <form>
-                    <input class="form-input" placeholder="Your email" name="email" type="email" />
-                    <input class="form-input" placeholder="******" name="password" type="password" />
-                    <button class="btn btn-block btn-primary" [ngStyle]="{ 'cursor': 'pointer' }" type="submit">
+                <!-- <form >
+                    <input
+                    class="form-input"
+                     name="email"
+                    ngModel                   
+                    placeholder="Add email"
+                  />
+                  <input
+                    class="form-input"
+                    name="password"
+                    ngModel               
+                    placeholder="******"
+                  />
+                   
+                    <button class="btn btn-block btn-primary" (click)="onSubmit()" [ngStyle]="{ 'cursor': 'pointer' }" type="button">
                         Submit
                     </button>
-                </form>
+                </form> -->
 
 
 

@@ -1,5 +1,5 @@
 const { User } = require("../models");
-
+const { signToken } = require('../utils/auth');
 module.exports = {
   // Get all courses
   getUsers(req, res) {
@@ -10,18 +10,24 @@ module.exports = {
   },
 
   getLoginUser(req, res) {
-    User.findOne({ username: req.params.username })
+    
+    User.findOne({ email: req.body.username })
       .select("-__v")
       .then((user) => {
+        console.log(user);
         if (!user) {
           res.status(404).json({ message: "No user with that username" });
         } else {
-          const correctPw = user.isCorrectPassword(req.params.password);
+          const correctPw = user.isCorrectPassword(req.body.password);
 
           if (!correctPw) {
             res.status(404).json({ message: "Mismatch password" });
           }
-          res.json(user);
+          
+          const token = signToken(user);
+ 
+   
+          res.json({user,token});
         }
       })
       .catch((err) => res.status(500).json(err));
@@ -38,7 +44,8 @@ module.exports = {
   },
   createUser(req, res) {
     User.create(req.body)
-      .then((user) => res.json(user))
+      .then((user) => { const token = signToken(user);     
+        res.json({user,token});})
       .catch((err) => {
         console.log(err);
         return res.status(500).json(err);

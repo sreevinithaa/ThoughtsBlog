@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SingleThoughtComponent } from './components/single-thought/single-thought.component';
 import { CommentItemComponent } from './components/comment-item/comment-item.component';
+import {FormsModule} from  '@angular/forms'
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { CommentItemComponent } from './components/comment-item/comment-item.com
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

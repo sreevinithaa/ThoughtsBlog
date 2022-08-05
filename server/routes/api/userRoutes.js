@@ -15,9 +15,6 @@ router
   .get(getSingleUser)
  
 
-  router
-  .route('/login')
-  .post(getLoginUser)
  
 
 module.exports = router;
