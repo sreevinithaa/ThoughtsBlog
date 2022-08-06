@@ -34,4 +34,11 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
+  onAddThought(thought:Thought)
+  {
+    this.thoughtService.addThought(thought).subscribe((t) => {
+      console.log(t);
+      this.thoughts.push(t);
+    });
+  }
 }

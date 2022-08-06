@@ -24,10 +24,10 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   createThought(req, res) {
-  let thought;
+  let cthought;
     Thought.create(req.body)
       .then((thought) => {
-        thought=thought;
+        cthought=thought;
         return User.findOneAndUpdate(
           { username: thought.thoughtAuthor },
           { $addToSet: { thoughts: thought._id } },
@@ -39,7 +39,7 @@ module.exports = {
           ? res.status(404).json({
               message: "Thought created, but found no user with that ID",
             })
-          :   res.json(thought)
+          :   res.json(cthought)
       )
       .catch((err) => {
         console.log(err);

@@ -18,8 +18,10 @@ showTitle:boolean=true;
       .subscribe((thought) => (this.thoughts = thought));
     
   }
-  addThought()
+  onAddThought(thought:Thought)
   {
-    
+    this.thoughtService.addThought(thought).subscribe((t) => {
+      this.thoughts.push(t);
+    });
   }
 }
