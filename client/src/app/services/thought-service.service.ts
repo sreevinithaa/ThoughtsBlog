@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Thought } from '../Thought';
 import { User } from '../User';
 import { Comment } from '../Comment';
+import { environment } from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -15,7 +16,7 @@ const httpOptions = {
 })
 export class ThoughtServiceService {
 
-  private apiUrl = 'https://thoughtblogs.herokuapp.com:3001/api/thought';
+  private apiUrl = environment.apiUrl+'/api/thought';
 
   constructor(private http: HttpClient) {}
 

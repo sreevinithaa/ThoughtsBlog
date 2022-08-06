@@ -8,6 +8,7 @@ import decode from 'jwt-decode';
 
 import { TokenStorage } from 'src/app/token.storage';
 import { User } from '../User';
+import { environment } from '../../environments/environment';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -23,7 +24,7 @@ interface AuthResponse {
 export class AuthService {
   private user$ = new BehaviorSubject<User | null>(null);
   private isloggedIn: Subject<boolean> = new ReplaySubject<boolean>(1);
-  private apiUrl = 'https://thoughtblogs.herokuapp.com:3001/api';
+  private apiUrl = environment.apiUrl+'/api';
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorage) {}
   getProfile() :any|null{
