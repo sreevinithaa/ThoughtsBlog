@@ -4,11 +4,14 @@
             <h4 class="card-header bg-dark text-light p-2">Sign Up</h4>
             <div class="card-body">
 
-                <form>
-                    <input class="form-input" placeholder="Your username" name="username" type="text" />
-                    <input class="form-input" placeholder="Your email" name="email" type="email" />
-                    <input class="form-input" placeholder="******" name="password" type="password" />
-                    <button class="btn btn-block btn-primary" [ngStyle]="{ 'cursor': 'pointer' }" type="submit">
+                <form #signUp="ngForm" (ngSubmit)="onSubmit(signUp)">
+                    <input class="form-control form-input" placeholder="Your username"  required
+                    [(ngModel)]="username" name="username"  />
+                    <input class="form-control form-input" placeholder="Your email" name="email"  [(ngModel)]="email"
+                        required  />
+                    <input class=" form-control form-input" placeholder="******" [(ngModel)]="password"  name="password" type="password" />
+                    <button class="form-control btn btn-block btn-primary" [ngStyle]="{ 'cursor': 'pointer' }"
+                        type="submit">
                         Submit
                     </button>
                 </form>

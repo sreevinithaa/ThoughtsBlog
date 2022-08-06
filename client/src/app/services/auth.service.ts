@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Observable, BehaviorSubject, firstValueFrom, of } from 'rxjs';
+import { Observable, BehaviorSubject, firstValueFrom, of,ReplaySubject,Subject } from 'rxjs';
 import { tap, pluck, catchError } from 'rxjs/operators';
 
 import decode from 'jwt-decode';
@@ -22,7 +22,7 @@ interface AuthResponse {
 })
 export class AuthService {
   private user$ = new BehaviorSubject<User | null>(null);
-
+  private isloggedIn: Subject<boolean> = new ReplaySubject<boolean>(1);
   private apiUrl = 'http://localhost:3001/api';
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorage) {}
@@ -48,14 +48,18 @@ export class AuthService {
     return false;
   }
   logoutUser() {
+    this.isloggedIn.next(false)
     this.tokenStorage.signOut();
   }
-  
+  loginStatusChange(): Observable<boolean> {
+    return this.isloggedIn.asObservable();
+  }
   loginUser(user: User): Observable<User> {
     const url = `${this.apiUrl}/login`;
     return this.http.post<AuthResponse>(url, user, httpOptions).pipe(
       tap(({ token, user }) => {
         this.setUser(user);
+        this.isloggedIn.next(true)
         this.tokenStorage.saveToken(token);
       }),
       pluck('user')
@@ -75,6 +79,7 @@ export class AuthService {
     return this.http.post<AuthResponse>(url, user, httpOptions).pipe(
       tap(({ token, user }) => {
         this.setUser(user);
+        this.isloggedIn.next(true)
         this.tokenStorage.saveToken(token);
       }),
       pluck('user')

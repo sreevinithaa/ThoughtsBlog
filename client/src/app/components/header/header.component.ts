@@ -1,29 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from 'src/app/services/auth.service'
+import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-isLoggedIn:boolean=false;
-profileUser:any|null=null;
-  constructor(private auth :AuthService) { }
+  isLoggedIn: boolean = false;
+  profileUser: any | null = null;
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
-    this.isLoggedIn=this.auth.loggedIn();
-    if(this.isLoggedIn)
-    {
-      this.profileUser=this.auth
-      .getProfile();
-      
-    console.log(this.profileUser);
-    }
+    
+    this.auth.loginStatusChange().subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+      if (this.isLoggedIn) {
+        this.profileUser = this.auth.getProfile();
+  
+        
+      }
+    });
+    
   }
-  logout()
-  {
+  logout() {
     this.auth.logoutUser();
   }
 }
