@@ -1,21 +1,21 @@
 <div>
     <h4>What are your thoughts on this thought?</h4>
 
+    <div *ngIf="IsLoggedIn">
+        <form class="flex-row justify-center justify-space-between-md align-center">
+            <div class="col-12 col-lg-9">
+                <textarea name="commentText" placeholder="Add your comment..." class="form-input w-100"
+                    [ngStyle]="{ 'lineHeight': '1.5', 'resize': 'vertical' }"></textarea>
+            </div>
 
-    <form class="flex-row justify-center justify-space-between-md align-center">
-        <div class="col-12 col-lg-9">
-            <textarea name="commentText" placeholder="Add your comment..." class="form-input w-100"
-                [ngStyle]="{ 'lineHeight': '1.5', 'resize': 'vertical' }"></textarea>
-        </div>
-
-        <div class="col-12 col-lg-3">
-            <button class="btn btn-primary btn-block py-3" type="submit">
-                Add Comment
-            </button>
-        </div>
-    </form>
-
-    <p>
+            <div class="col-12 col-lg-3">
+                <button class="btn btn-primary btn-block py-3" type="submit">
+                    Add Comment
+                </button>
+            </div>
+        </form>
+    </div>
+    <p *ngIf="!IsLoggedIn">
         You need to be logged in to share your thoughts. Please
         <a to="/login">login</a> or
         <a to="/signup">signup.</a>

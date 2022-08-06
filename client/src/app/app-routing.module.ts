@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'thought', component: HomeComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'me', component: ProfileComponent },
   { path: 'thought/:id', component: SingleThoughtComponent },
   { path: 'login', component: LoginComponent }]
 //   { path: 'employees/new', component: AddEmployeeComponent }, // <-- add this line

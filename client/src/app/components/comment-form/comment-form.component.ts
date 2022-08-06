@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-comment-form',
   templateUrl: './comment-form.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class CommentFormComponent implements OnInit {
   @Input() thoughtId?:string;
-  constructor() { }
+  IsLoggedIn:boolean=false;
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
+    this.IsLoggedIn=this.auth.loggedIn();
   }
 
 }
