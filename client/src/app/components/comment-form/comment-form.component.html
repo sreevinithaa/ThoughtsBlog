@@ -2,13 +2,16 @@
     <h4>What are your thoughts on this thought?</h4>
 
     <div *ngIf="IsLoggedIn">
-        <form class="flex-row justify-center justify-space-between-md align-center">
-            <div class="col-12 col-lg-9">
-                <textarea name="commentText" placeholder="Add your comment..." class="form-input w-100"
+        <form #addComment="ngForm" (ngSubmit)="onSubmit(addComment)" class="flex-row justify-center justify-space-between-md align-center">
+            <div class="form-group col-12 col-lg-9">
+                <textarea 
+                name="commentText" 
+                #commentText="ngModel" required ngModel
+                placeholder="Add your comment..." class="form-control form-input w-100"
                     [ngStyle]="{ 'lineHeight': '1.5', 'resize': 'vertical' }"></textarea>
             </div>
 
-            <div class="col-12 col-lg-3">
+            <div class="form-group col-12 col-lg-3">
                 <button class="btn btn-primary btn-block py-3" type="submit">
                     Add Comment
                 </button>

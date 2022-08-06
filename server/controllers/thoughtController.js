@@ -46,13 +46,14 @@ module.exports = {
       });
   },
   addComment(req, res) {
+   
     Thought.findOneAndUpdate(
-      { _id: req.param.thoughtId },
+      { _id: req.params.thoughtId },
       {
         $addToSet: {
           comments: {
-            commentText: req.param.commentText,
-            commentAuthor: req.param.username,
+            commentText: req.body.commentText,
+            commentAuthor: req.body.commentAuthor,
           },
         },
       },
@@ -64,7 +65,7 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({
-              message: "Thought created, but found no user with that ID",
+              message: "Error occured!No thought found!",
             })
           :  res.json(thought)
       )
@@ -108,7 +109,7 @@ module.exports = {
             message: "thought couldnt find!",
           })
         : User.findOneAndUpdate(
-            { _id: context.user._id },
+            { username: thought.thoughtAuthor},
             { $pull: { thoughts: thought._id } }
           ).then((user) =>
             !user

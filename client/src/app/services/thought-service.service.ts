@@ -32,11 +32,11 @@ export class ThoughtServiceService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<User>(url);
   }
-  addComment(comment: Comment,thoughtId:string): Observable<Thought> {
+  addComment(comment: Comment,thoughtId:string|null): Observable<Thought> {
     const url = `${this.apiUrl}/${thoughtId}/comment`;
     return this.http.post<Thought>(url, comment, httpOptions);
   }
-  removeComment(thoughtId: string,commentId:string): Observable<Thought> {
+  removeComment(thoughtId: string,commentId:string|null): Observable<Thought> {
     const url = `${this.apiUrl}/${thoughtId}/comment/${commentId}`;
     return this.http.delete<Thought>(url);
   }
