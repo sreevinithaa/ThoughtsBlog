@@ -1,14 +1,17 @@
 <div>
     <h3>What's on your techy mind?</h3>
     <div *ngIf="IsLoggedIn">
+        <form #addThought="ngForm" (ngSubmit)="onSubmit(addThought)"
+            class="flex-row justify-center justify-space-between-md align-center">
 
-        <form class="flex-row justify-center justify-space-between-md align-center">
-            <div class="col-12 col-lg-9">
-                <textarea name="thoughtText" placeholder="Here's a new thought..." class="form-input w-100"
+            <div class="form-group col-12 col-lg-9">
+                <textarea name="thoughtText" #thoughtText="ngModel" required ngModel
+                    placeholder="Here's a new thought..." class="form-control form-input w-100"
                     [ngStyle]="{'lineHeight': '1.5','resize':'vertical'}"></textarea>
+                    <div *ngIf="thoughtText.touched && thoughtText.invalid" class="my-3 p-3 bg-danger text-white">Thought is required</div>
             </div>
 
-            <div class="col-12 col-lg-3">
+            <div class="form-group col-12 col-lg-3">
                 <button class="btn btn-primary btn-block py-3" type="submit">
                     Add Thought
                 </button>
@@ -22,7 +25,6 @@
     </div>
     <p *ngIf="!IsLoggedIn">
         You need to be logged in to share your thoughts. Please
-        <a [routerLink]="['/login']"
-        >login</a> or <a  [routerLink]="['/signup']">signup.</a>
+        <a [routerLink]="['/login']">login</a> or <a [routerLink]="['/signup']">signup.</a>
     </p>
 </div>

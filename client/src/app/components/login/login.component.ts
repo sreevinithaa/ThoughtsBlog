@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   }
   
   onSubmit(login: any) {
-  this.email="";
+  this.error="";
     if (!login.form.controls.email.value) {
       this.error='Please enter the email!';
       return;
