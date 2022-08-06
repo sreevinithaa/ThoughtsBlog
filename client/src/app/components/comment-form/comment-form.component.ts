@@ -11,6 +11,7 @@ import { Comment } from 'src/app/Comment';
 export class CommentFormComponent implements OnInit {
   @Input() thoughtId?: string | null = null;
   @Output() onAddComment: EventEmitter<Comment> = new EventEmitter();
+  commentText:string|null=null;
   IsLoggedIn: boolean = false;
   error?: string;
   constructor(
@@ -23,15 +24,17 @@ export class CommentFormComponent implements OnInit {
     this.IsLoggedIn = this.auth.loggedIn();
   }
   onSubmit(addComment: any) {
-    console.log(addComment);
-    if (!addComment.form.controls.commentText.value) {
+    
+    if (!this.commentText) {
       this.error = 'Please enter the comment!';
       return;
     }
     const comment: Comment = {
-      commentText: addComment.form.controls.commentText.value,
+      commentText: this.commentText,
       commentAuthor: this.auth.getProfile().data.username,
     };
+
     this.onAddComment.emit(comment);
+    this.commentText="";
   }
 }

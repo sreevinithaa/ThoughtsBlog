@@ -5,10 +5,10 @@
             class="flex-row justify-center justify-space-between-md align-center">
 
             <div class="form-group col-12 col-lg-9">
-                <textarea name="thoughtText" #thoughtText="ngModel" required ngModel
+                <textarea name="thoughtText"  [(ngModel)]="thoughtText"  required 
                     placeholder="Here's a new thought..." class="form-control form-input w-100"
                     [ngStyle]="{'lineHeight': '1.5','resize':'vertical'}"></textarea>
-                    <div *ngIf="thoughtText.touched && thoughtText.invalid" class="my-3 p-3 bg-danger text-white">Thought is required</div>
+                   
             </div>
 
             <div class="form-group col-12 col-lg-3">

@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     
     this.auth.loginStatusChange().subscribe(loggedIn => {
-      this.isLoggedIn = loggedIn;
+      this.isLoggedIn = this.auth.loggedIn();
       if (this.isLoggedIn) {
         this.profileUser = this.auth.getProfile();
   

@@ -6,7 +6,7 @@
             <div class="form-group col-12 col-lg-9">
                 <textarea 
                 name="commentText" 
-                #commentText="ngModel" required ngModel
+                [(ngModel)]="commentText" required 
                 placeholder="Add your comment..." class="form-control form-input w-100"
                     [ngStyle]="{ 'lineHeight': '1.5', 'resize': 'vertical' }"></textarea>
             </div>

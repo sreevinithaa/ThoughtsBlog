@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ThoughtFormComponent implements OnInit {
   IsLoggedIn: boolean = false;
+  thoughtText:string|null=null;
   @Output() onAddThought: EventEmitter<Thought> = new EventEmitter();
   error?: string;
   constructor( private router: Router,private auth: AuthService,private thoughtService:ThoughtServiceService) {}
@@ -19,14 +20,15 @@ export class ThoughtFormComponent implements OnInit {
   }
   onSubmit(addThought: any) {
     this.error="";
-    if (!addThought.form.controls.thoughtText.value) {
+    if (!this.thoughtText) {
       this.error='Please enter the thought!';
       return;
     }
     const thought: Thought = {
-      thoughtText: addThought.form.controls.thoughtText.value,
+      thoughtText: this.thoughtText,
       thoughtAuthor: this.auth.getProfile().data.username
     };
     this.onAddThought.emit(thought);
+    this.thoughtText="";
   }
 }
