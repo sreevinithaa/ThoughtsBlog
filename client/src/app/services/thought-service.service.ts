@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class ThoughtServiceService {
 
-  private apiUrl = 'http://localhost:3001/api/thought';
+  private apiUrl = 'https://thoughtblogs.herokuapp.com:3001/api/thought';
 
   constructor(private http: HttpClient) {}
 

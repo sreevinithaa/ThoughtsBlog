@@ -12,7 +12,7 @@ const httpOptions = {
 })
 export class UserServiceService {
 
-  private apiUrl = 'http://localhost:3001/api/users';
+  private apiUrl = 'https://thoughtblogs.herokuapp.com:3001/api/users';
 
   constructor(private http: HttpClient) {}
 

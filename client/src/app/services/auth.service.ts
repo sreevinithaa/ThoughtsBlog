@@ -23,7 +23,7 @@ interface AuthResponse {
 export class AuthService {
   private user$ = new BehaviorSubject<User | null>(null);
   private isloggedIn: Subject<boolean> = new ReplaySubject<boolean>(1);
-  private apiUrl = 'http://localhost:3001/api';
+  private apiUrl = 'https://thoughtblogs.herokuapp.com:3001/api';
 
   constructor(private http: HttpClient, private tokenStorage: TokenStorage) {}
   getProfile() :any|null{
