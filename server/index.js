@@ -3,7 +3,7 @@ const db = require('./config/connection');
 const routes = require('./routes');
 const { authMiddleware } = require('./utils/auth');
 const cwd = process.cwd();
-
+require('dotenv').config();
 const PORT = process.env.port || 3001;
 const app = express();
 
