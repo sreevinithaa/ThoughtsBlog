@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Thought } from 'src/app/Thought';
+import { Comment } from 'src/app/Comment';
 import { ActivatedRoute } from '@angular/router';
 import { ThoughtServiceService } from '../../services/thought-service.service';
 @Component({
@@ -22,5 +23,12 @@ export class SingleThoughtComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  addComment(comment:Comment)
+  {
+    this.thoughtService.addComment(comment,this.thoughtId?this.thoughtId:"").subscribe((com) => {
+    this.thought=com;
+     
+     
+    });
+  }
 }

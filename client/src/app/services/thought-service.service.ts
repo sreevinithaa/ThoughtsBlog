@@ -40,7 +40,7 @@ export class ThoughtServiceService {
     const url = `${this.apiUrl}/${thoughtId}/comment/${commentId}`;
     return this.http.delete<Thought>(url);
   }
-  addThought(thought: Thought): Observable<User> {
-    return this.http.post<User>(this.apiUrl, thought, httpOptions);
+  addThought(thought: Thought): Observable<Thought> {
+    return this.http.post<Thought>(this.apiUrl, thought, httpOptions);
   }
 }

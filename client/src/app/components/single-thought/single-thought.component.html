@@ -20,7 +20,7 @@
 
     </div>
     <div class="m-3 p-4" [ngStyle]="{ 'border': '1px dotted #1a1a1a' }">
-        <app-comment-form [thoughtId]="thought?._id"></app-comment-form>
+        <app-comment-form [thoughtId]="thought?._id" (onAddComment)="addComment($event)"></app-comment-form>
 
     </div>
 </div>

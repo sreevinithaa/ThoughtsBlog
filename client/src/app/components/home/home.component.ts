@@ -18,4 +18,8 @@ showTitle:boolean=true;
       .subscribe((thought) => (this.thoughts = thought));
     
   }
+  addThought()
+  {
+    
+  }
 }
